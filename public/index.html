@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <input type="number" name="upto" id="upto" placeholder="Output size">
+        <button onclick="generate()">Doit</button>
+        <button onclick="copy()">Copy It!</button>
+        <textarea id="out" class="out">
+            
+
+        </textarea>
+    </div>
+
+    
+
+    <script>
+        function generate() {
+            const out = document.getElementById('out')
+            const upto = Number(document.getElementById('upto').value) + 1
+
+            out.innerHTML = ""
+
+            out.innerHTML += "["
+
+            for (let i = 0; i < upto; i++) {
+                out.innerHTML += "[";
+                for (let j = 0; j < upto; j++) {
+                    out.innerHTML += i * j + (j == upto - 1 ? "" : ", ")
+                }
+                out.innerHTML += "]" + (i == upto - 1 ? "" : ", \r" )          
+            }
+
+            out.innerHTML += "]"
+
+            out.rows = upto
+        }
+
+        function copy() {
+            document.getElementById('out').select();
+
+            document.execCommand('copy')
+        }
+            
+    </script>
+</body>
+</html>
